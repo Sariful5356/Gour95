@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign-Up Form with OTP Verification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .signup-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 14px;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        input[type="text"], input[type="tel"], input[type="password"], input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        /* Style for OTP Verification Button */
+        .otp-button {
+            width: auto;
+            background-color: #f57c00;
+            padding: 10px 15px;
+            font-size: 14px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+
+        .otp-button:hover {
+            background-color: #e67e22;
+        }
+
+        /* Media Query for Mobile Screens */
+        @media (max-width: 480px) {
+            h2 {
+                font-size: 1.5rem;
+            }
+
+            label {
+                font-size: 12px;
+            }
+
+            input[type="text"], input[type="tel"], input[type="password"], input[type="number"], textarea {
+                padding: 8px;
+                font-size: 14px;
+            }
+
+            button, .otp-button {
+                padding: 8px;
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="signup-container">
+        <h2>Sign Up</h2>
+        <form action="/submit-signup" method="post">
+            <!-- Full Name -->
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <!-- Mobile Number -->
+            <label for="mobile">Mobile Number:</label>
+            <input type="tel" id="mobile" name="mobile" pattern="[0-9]{10}" placeholder="10-digit number" required>
+            
+            <!-- OTP Button -->
+            <button type="button" class="otp-button" id="sendOtp">Send OTP</button>
+
+            <!-- Address -->
+            <label for="address">Address:</label>
+            <textarea id="address" name="address" rows="3" placeholder="Enter your address" required></textarea>
+
+            <!-- Password -->
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+
+            <!-- Confirm OTP -->
+            <label for="otp">OTP (One-Time Password):</label>
+            <input type="number" id="otp" name="otp" placeholder="Enter OTP" required>
+
+            <!-- Sign Up Button -->
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+
+    <script>
+        // Mock function to simulate sending OTP
+        document.getElementById('sendOtp').addEventListener('click', function() {
+            const mobileNumber = document.getElementById('mobile').value;
+            if (mobileNumber.length === 10) {
+                alert('OTP has been sent to your mobile number.');
+            } else {
+                alert('Please enter a valid 10-digit mobile number.');
+            }
+        });
+    </script>
+
+</body>
+</html>
